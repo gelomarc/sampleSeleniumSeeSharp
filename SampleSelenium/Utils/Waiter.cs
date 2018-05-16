@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SampleSelenium.Utils
 {
-    class Waiter
+    public class Waiter
     {
         private const int TIMEOUT = 30;
         WebDriverWait wait;
@@ -35,6 +35,19 @@ namespace SampleSelenium.Utils
         {
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
             element.Click();
+        }
+
+        public void ClickAndWaitForNewPageToLoad(IWebElement element)
+        {
+            Click(element);
+            WaitForPageLoad();
+        }
+
+        public void EnterText(IWebElement element, string text, By by)
+        {
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(by));
+            element.Clear();
+            element.SendKeys(text);
         }
     }
 

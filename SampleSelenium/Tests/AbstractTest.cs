@@ -9,29 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SampleSelenium
+namespace SampleSelenium.Tests
 {
-    class Test
+    public abstract class AbstractTest
     {
         IWebDriver driver;
-        BasePage basePage;
-        Waiter waiter;
+        public BrowseInventoryPage browseInventoryPage;
+        public Waiter waiter;
 
         [SetUp]
         public void Initialize()
         {
             driver = new ChromeDriver();
-            basePage = new BasePage(driver);
+            browseInventoryPage = new BrowseInventoryPage(driver);
             waiter = new Waiter(driver);
+            waiter.OpenPage("http://automationpractice.com");
         }
 
-        [Test]
-        public void OpenAppTest()
-        {
-            waiter.OpenPage("http://automationpractice.com");
-            basePage.ClickOnContactLinkButton();
-        }
-    
         [TearDown]
         public void EndTesT()
         {
