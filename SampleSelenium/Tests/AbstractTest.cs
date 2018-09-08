@@ -15,21 +15,23 @@ namespace SampleSelenium.Tests
     {
         IWebDriver driver;
         public BrowseInventoryPage browseInventoryPage;
-        public Waiter waiter;
+        public Actions Actions;
 
         [SetUp]
         public void Initialize()
         {
-            driver = new ChromeDriver();
+            var options = new ChromeOptions();
+            options.AddArgument("headless");
+            driver = new ChromeDriver(options);
             browseInventoryPage = new BrowseInventoryPage(driver);
-            waiter = new Waiter(driver);
-            waiter.OpenPage("http://automationpractice.com");
+            Actions = new Actions(driver);
+            Actions.OpenPage("http://automationpractice.com");
         }
 
         [TearDown]
-        public void EndTesT()
+        public void EndTest()
         {
-            driver.Close();
+            driver.Quit();
         }
     }
 }

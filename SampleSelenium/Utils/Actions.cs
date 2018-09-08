@@ -8,24 +8,24 @@ using System.Threading.Tasks;
 
 namespace SampleSelenium.Utils
 {
-    public class Waiter
+    public class Actions
     {
         private const int TIMEOUT = 30;
         WebDriverWait wait;
         private IWebDriver driver;
 
-        public Waiter(IWebDriver driver)
+        public Actions(IWebDriver driver)
         {
             this.driver = driver;
-            this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(TIMEOUT));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(TIMEOUT));
         }
 
         public void WaitForPageLoad()
         {
-            wait.Until(usedDriver => (string)(((IJavaScriptExecutor)usedDriver).ExecuteScript("return document.readyState")) == "complete");
+            wait.Until(usedDriver => (string)((IJavaScriptExecutor)usedDriver).ExecuteScript("return document.readyState") == "complete");
         }
 
-        public void OpenPage(String url)
+        public void OpenPage(string url)
         {
             driver.Url = url;
             WaitForPageLoad();

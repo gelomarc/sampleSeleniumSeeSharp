@@ -11,14 +11,14 @@ namespace SampleSelenium.PageObjects
 {
     public class BasePage
     {
-        protected Waiter waiter;
+        protected Actions actions;
         protected IWebDriver driver;
 
         public BasePage(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(driver, this);
-            this.waiter = new Waiter(driver);
+            actions = new Actions(driver);
         }
 
         [FindsBy(How = How.Id, Using = "contact-link")]
@@ -56,53 +56,53 @@ namespace SampleSelenium.PageObjects
 
         public void ClickOnContactLinkButton()
         {
-            waiter.ClickAndWaitForNewPageToLoad(contactLinkButton);
+            actions.ClickAndWaitForNewPageToLoad(contactLinkButton);
         }
 
         public void EnterTextToSearchBoxAndSearch(String text)
         {
-            waiter.EnterText(searchBox, text, By.Id("search_query_top"));
-            waiter.ClickAndWaitForNewPageToLoad(searchButton);
+            actions.EnterText(searchBox, text, By.Id("search_query_top"));
+            actions.ClickAndWaitForNewPageToLoad(searchButton);
         }
 
         public void OpenCart()
         {
-            waiter.ClickAndWaitForNewPageToLoad(shoppingCart);
+            actions.ClickAndWaitForNewPageToLoad(shoppingCart);
         }
 
         public void ClickOnLogo()
         {
-            waiter.ClickAndWaitForNewPageToLoad(logo);
+            actions.ClickAndWaitForNewPageToLoad(logo);
         }
 
         public void OpenWomenCategory()
         {
-            waiter.ClickAndWaitForNewPageToLoad(womenCategory);
+            actions.ClickAndWaitForNewPageToLoad(womenCategory);
         }
 
         public void OpenDressesCategory()
         {
-            waiter.ClickAndWaitForNewPageToLoad(dressesCategory);
+            actions.ClickAndWaitForNewPageToLoad(dressesCategory);
         }
 
         public void OpenTShirtsCategory()
         {
-            waiter.ClickAndWaitForNewPageToLoad(tShirtsCategory);
+            actions.ClickAndWaitForNewPageToLoad(tShirtsCategory);
         }
 
         public void ClickOnSignIn()
         {
-            waiter.ClickAndWaitForNewPageToLoad(signIn);
+            actions.ClickAndWaitForNewPageToLoad(signIn);
         }
 
         public void OpenMyAccount()
         {
-            waiter.ClickAndWaitForNewPageToLoad(openAccount);
+            actions.ClickAndWaitForNewPageToLoad(openAccount);
         }
 
         public void ClickOnSignOut()
         {
-            waiter.ClickAndWaitForNewPageToLoad(signOut);
+            actions.ClickAndWaitForNewPageToLoad(signOut);
         }
     }
 }

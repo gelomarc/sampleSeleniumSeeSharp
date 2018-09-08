@@ -21,8 +21,6 @@ namespace SampleSelenium
             browseInventoryPage.OpenWomenCategory();
             Assert.AreEqual("Faded Short Sleeve T-shirts", browseInventoryPage.getInventoryItemName(0));
             Assert.AreEqual("16.51", browseInventoryPage.getInventoryItemPrice(0));
-        }
-    
-        
+        }            
     }
 }
